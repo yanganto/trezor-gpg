@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title>Encrypted Message</title>
     <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-    <script src="scripts/encrypt.js"></script>
 </head>
 <body>
-    <!-- make these buttons as switch -->
-    <button type="button">Signed</button>
-    <button type="button">Encrypt</button>
-    <button type="button">Encrypt with Signed</button>
-    <button type="button">Decrypt</button>
-    <button type="button">Remove Signed</button>
+    <input id="publicKey" />
+    <button type="button" id="encryptBTN" >Encrypt</button>
+    <!-- TODO Sign -->
+    <!-- <button type="button">Signed</button> -->
+    <p id="status"></p>
+    <script src="scripts/openpgp.min.js"></script>
+    <script src="scripts/encrypt.js"></script>
 </body>
 </html>

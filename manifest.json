@@ -28,6 +28,8 @@
   "permissions": [
     "storage",
     "messagesRead",
-    "messagesMove"
+    "messagesMove",
+    "compose",
+    "nativeMessaging"
   ]
 }
