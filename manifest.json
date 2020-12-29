@@ -29,6 +29,7 @@
     "storage",
     "messagesRead",
     "messagesMove",
-    "compose"
+    "compose",
+    "nativeMessaging"
   ]
 }

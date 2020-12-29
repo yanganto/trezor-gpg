@@ -1,3 +1,10 @@
+function onResponse(response) {
+  console.log("Received " + response);
+}
+
+function onError(error) {
+  console.log(`Error: ${error}`);
+}
 async function encryptMsg() {
   let status = document.getElementById("status");
 
@@ -10,13 +17,24 @@ async function encryptMsg() {
   let body = details.plainTextBody;
   let pk = publicKey.value;
   status.innerHTML = `encrypting with ${pk}... `;
-  const { data: encrypted } = await openpgp.encrypt({
-    message: openpgp.message.fromText(body),
-    publicKeys: (await openpgp.key.readArmored(pk)).keys[0]
-  });
-  console.log(encrypted);
 
-  browser.compose.setComposeDetails(tab.id, { plainTextBody: encrypted });
+  let encrypted = "encrypted content";
+
+  // TODO: figure out how the public key format
+  // const { data: encrypted } = await openpgp.encrypt({
+  //   message: openpgp.message.fromText(body),
+  //   publicKeys: (await openpgp.key.readArmored(pk)).keys[0]
+  // });
+  // console.log(encrypted);
+
+  // browser.compose.setComposeDetails(tab.id, { plainTextBody: encrypted });
+
+  // TODO: sign the encrypted message 
+  status.innerHTML = `signed message... `;
+  var sending = browser.runtime.sendNativeMessage(
+    "trezor_gpg",
+    "sign " + encrypted);
+  sending.then(onResponse, onError);
   status.innerHTML = "";
 }
 
