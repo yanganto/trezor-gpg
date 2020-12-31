@@ -6,11 +6,27 @@
     <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
 </head>
 <body>
-    <input id="publicKey" />
+  <h5>Receiver's Public Key:</h5>
+  <!-- TODO: query pk from key server -->
+  <textarea id="publicKey" placeholder=
+"-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mFIEXd0LZBMIKoZIzj0DAQcCAwQEbw8bJGTb+OgvVWc9XASGrEzsSv0X6G+2JRAH
+X/2piMmWMIwJH1cD4QQEOZOCmHKRcd9NLpCn7VcB5CdY/0sQtCFBbnRvbmlvIFlh
+bmcgPHlhbmdhbnRvQGdtYWlsLmNvbT6IgAQTEwgAHAUCXd0LZAILCQIbAwQVCAkK
+BBYCAwECF4ACHgEAFgkQvVRQTkMUFGILGlRSRVpPUi1HUEeTcgEAt6O6JiJ0ofnW
+K+6rFhsc51hkCjYFvMy9HK8XJbeK2VcA/juVDBl5Mh8zQZf9eZSMKe40naJXk4NE
+vn2rlE6QWKF8uFYEXd0LZBIIKoZIzj0DAQcCAwTG8RHOIHkxsbHDRHbhU17ljpO9
++sYttDDlzeayvrBdIDJFCnBwV+E3efU2w7KhAUlZ7QI8WVK132gnDNPOANwFAwEI
+B4htBBgTCAAJBQJd3QtkAhsMABYJEL1UUE5DFBRiCxpUUkVaT1ItR1BHtr0BAIb6
+b/ElqKiaFMwMCSGwHw1pZx4PQNWNyLEHHh7vphLWAP4t87smQX2LXaS/bc8RkdnR
+xKo8mAnNrRoYzNCHSnvN0Q==
+=3yxu
+-----END PGP PUBLIC KEY BLOCK-----"></textarea>
+    <br />
     <button type="button" id="encryptBTN" >Encrypt</button>
-    <!-- TODO Sign -->
-    <!-- <button type="button">Signed</button> -->
-    <p id="status"></p>
+    <button type="button" id="signBTN" >Signed</button>
+    <p id="statusP"></p>
     <script src="scripts/openpgp.min.js"></script>
     <script src="scripts/encrypt.js"></script>
 </body>

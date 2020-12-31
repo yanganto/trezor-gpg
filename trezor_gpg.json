@@ -1,7 +1,7 @@
 {
   "name": "trezor_gpg",
   "description": "Example host for native messaging",
-  "path": "/path/to/trezor-gpg/poc.py",
+  "path": "/path/to/trezor-gpg/app",
   "type": "stdio",
   "allowed_extensions": [ "yanganto@gmail.com" ]
 }
