@@ -1,3 +1,8 @@
+let APP_INFO = `
+The content of email is encrypted by trezor-gpg
+https://github.com/yanganto/trezor-gpg
+Donate Bitcoin: 3MMXH72P73ew2c9CQdGHR3uh2LddbCCDxU
+`;
 async function encryptMsg() {
   let tab = await browser.tabs.query({
     active: true,
@@ -15,20 +20,13 @@ async function encryptMsg() {
     message: openpgp.message.fromText(body),
     publicKeys: pk
   });
-  browser.compose.setComposeDetails(tab.id, { plainTextBody: encrypted });
-
-  // TODO: sign the encrypted message
-  statusP.innerHTML = `signed message... `;
-
-  var sending = browser.runtime.sendNativeMessage(
-    "trezor_gpg",
-    "sign " + encrypted);
-  sending.then(onResponse, onError);
+  browser.compose.setComposeDetails(tab.id, { plainTextBody: encrypted + APP_INFO });
   statusP.innerHTML = "";
 }
 
 function onResponse(response) {
   console.log("Received " + response);
+  statusP.innerHTML = "";
 }
 
 function onError(error) {
@@ -52,7 +50,6 @@ async function signMsg() {
     "trezor_gpg",
     "sign:" + body);
   sending.then(onResponse, onError);
-  statusP.innerHTML = "";
 }
 
 encryptBTN.addEventListener("click", encryptMsg, false);
