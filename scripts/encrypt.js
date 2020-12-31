@@ -31,7 +31,7 @@ function onResponse(response) {
 
 function onError(error) {
   console.log(`Error: ${error}`);
-  statusP.innerHTML = "Please report to https://github.com/yanganto/trezor-gpg/issues " +
+  statusP.innerHTML = "Please report the email to https://github.com/yanganto/trezor-gpg/issues\n" +
   `Error: ${error}`;
 }
 
