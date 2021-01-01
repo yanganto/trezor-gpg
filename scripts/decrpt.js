@@ -1,6 +1,6 @@
 function onResponse(response) {
-  console.log(`Response: ${response}`)
-  document.body.textContent = response;
+  console.log(`Response: ${response}`);
+  statusP.innerHTML = response;
 }
 
 function onError(error) {
@@ -22,7 +22,18 @@ browser.tabs.query({
     let body = r.parts[0].body;
     var sending = browser.runtime.sendNativeMessage(
       "trezor_gpg",
-      "decrypt:" + body);
-    sending.then(onResponse, onError);
+      "load:" + body);
+    sending.then((r) => { document.body.textContent = r; }, onError);
     });
 });
+
+function dectMsg() {
+  statusP.innerHTML = `sending secret... `;
+  var sending = browser.runtime.sendNativeMessage(
+    "trezor_gpg",
+    "dec :" + pwI.value);
+  sending.then(onResponse, onError);
+  pwI.value = "";
+}
+
+decryptBTN.addEventListener("click", dectMsg, false);
